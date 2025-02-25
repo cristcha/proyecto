@@ -24,4 +24,9 @@ urlpatterns = [
     
     # Administración Películas
     path('peliculas/', include('peliculas.urls')),
+    
+    # Administración cinema
+    path('cinemas/', include('cinemas.urls')),
+    
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
