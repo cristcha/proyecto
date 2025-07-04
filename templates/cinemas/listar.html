@@ -32,6 +32,7 @@
                         <td>{{ cinema.cantidad_salas }}</td>
                         <td>
                             <a href='{% url "editarCinema" cinema.id_cinema %}' class='btn btn-primary'><span class='bi'></span>Editar</a>
+                            <a href='{% url "eliminarCinema" cinema.id_cinema %}' class='btn btn-danger'><span class='bi'></span>Eliminar</a>
                         </td>
                     </tr>
                     
