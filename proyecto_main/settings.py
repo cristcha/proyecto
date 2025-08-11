@@ -28,6 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+# Custom user model
+AUTH_USER_MODEL = 'usuarios.Empleado'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,9 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
     'peliculas',
     'cinemas',
     'horarios',
+    'usuarios',
 ]
 
 MIDDLEWARE = [

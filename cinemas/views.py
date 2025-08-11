@@ -2,6 +2,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Count
 from .models import Cinema, Sala, Formato
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+
 
 
 # Administración Cinemas
@@ -134,3 +138,34 @@ def editarSala(request, pk):
         }
         
         return render(request, 'salas/editar.html', context=contexto)
+    
+    
+    
+    
+# API Detalle salas
+@api_view(['GET'])
+def detalleSala(request):
+     
+    try: 
+        # Obtener sala según teatro y nombre de sala enviado   
+        sala = Sala.objects.filter(id_cinema__nombre=request.data['teatro']).filter(nombre=request.data['sala'])
+
+        if sala:
+        
+            sala = sala[0]
+            
+            return Response({
+                "id_sala": sala.id_sala,
+                "nombre": sala.nombre,
+                "capacidad": sala.capacidad,
+                "estado": sala.estado,
+                "formato": sala.id_formato.nombre,
+                "cinema": sala.id_cinema.nombre,
+                "dirección cinema": sala.id_cinema.direccion,
+            })
+        else:
+            raise
+        
+    except:
+        return Response({'Error': 'Sala no encontrada'}, status=status.HTTP_404_NOT_FOUND)
+    

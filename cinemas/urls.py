@@ -12,4 +12,8 @@ urlpatterns = [
     path('salas/', views.listarSalas, name='listarSalas'),
     path('agregar/sala/', views.agregarSala, name='agregarSala'),
     path('editar/sala/<int:pk>', views.editarSala, name='editarSala'),
+    
+    # API
+    path('api/sala', views.detalleSala),
+    
 ]
