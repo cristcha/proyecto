@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.listarCinemas, name='listarCinemas'),
     path('agregar/', views.agregarCinema, name='agregarCinema'),
     path('editar/<int:pk>', views.editarCinema, name='editarCinema'),
+    path('eliminar/<int:pk>', views.eliminarCinema, name='eliminarCinema'),
 
     # Salas
     path('salas/', views.listarSalas, name='listarSalas'),

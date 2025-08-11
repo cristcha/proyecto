@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Count
-from .models import Cinema, Sala, Formato
+from .models import Cinema, Sala, Formato, MapaSala
+import json
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -56,6 +57,25 @@ def editarCinema(request, pk):
         }
         
         return render(request, 'cinemas/editar.html', context=contexto)
+
+def eliminarCinema(request, pk):
+
+    cinema = get_object_or_404(Cinema, pk=pk)
+    
+    if request.method == 'POST':
+        
+        cinema.delete()
+        
+        return redirect('listarCinemas')
+        
+    else:
+    
+        
+        contexto = {
+            'cinema': cinema,
+        }
+        
+        return render(request, 'cinemas/eliminar.html', context=contexto)
 
 # Administración Salas
 
