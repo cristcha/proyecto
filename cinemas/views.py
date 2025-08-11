@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Count
-from .models import Cinema, Sala, Formato, MapaSala
+from .models import Cinema, Sala, Formato
 import json
 
 from rest_framework.decorators import api_view
